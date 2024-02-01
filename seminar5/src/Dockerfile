@@ -1,0 +1,4 @@
+FROM postgres:13.2-alpine
+ENV POSTGRES_DB tasksdb
+ENV POSTGRES_USER task
+ENV POSTGRES_PASSWORD task

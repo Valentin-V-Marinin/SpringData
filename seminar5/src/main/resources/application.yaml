@@ -1,0 +1,10 @@
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tasksdb
+    username: task
+    password: task
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
