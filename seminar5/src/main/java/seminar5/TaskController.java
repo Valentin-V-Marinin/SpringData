@@ -1,8 +1,5 @@
 package seminar5;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,7 +9,6 @@ import java.util.List;
 public class TaskController {
     private final TaskService service;
 
-    @Autowired
     public TaskController(TaskService service) {
         this.service = service;
     }
@@ -33,8 +29,8 @@ public class TaskController {
     }
 
     @PostMapping
-    public Task createTask(@RequestParam String description) {
-        return service.createTask(description);
+    public Task createTask(@RequestBody Task task) {
+        return service.createTask(task);
     }
 
     @PutMapping("/{id}")

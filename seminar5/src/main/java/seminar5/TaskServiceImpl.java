@@ -1,8 +1,6 @@
 package seminar5;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import seminar5.TaskService;
 
 import java.util.List;
 
@@ -10,7 +8,6 @@ import java.util.List;
 public class TaskServiceImpl implements TaskService {
     private final TaskRepository repository;
 
-    @Autowired
     public TaskServiceImpl(TaskRepository repository) {
         this.repository = repository;
     }
@@ -30,16 +27,15 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task createTask(String description) {
-        Task task = new Task(description);
-        return repository.save(task);
-    }
-
-    @Override
     public Task updateTask(Long id, Task.STATUS status) {
         Task existingTask = getTaskById(id);
         existingTask.setStatus(status);
         return repository.save(existingTask);
+    }
+
+    @Override
+    public Task createTask(Task task) {
+        return repository.save(task);
     }
 
     @Override

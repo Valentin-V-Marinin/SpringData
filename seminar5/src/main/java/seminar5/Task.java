@@ -13,31 +13,24 @@ import java.util.Date;
 @Table(name = "tasks")
 public class Task {
 
-    public enum STATUS { DO_NOT_STARTED, IN_PROGRESS, COMPLETED }
+    public enum STATUS { TO_DO, IN_PROGRESS, DONE }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "description", nullable = false)
     private String description;
 
     @Enumerated
-    @Column(nullable = false)
+    @Column(name = "status")
     private STATUS status;
 
-    @Column(nullable = false)
+    @Column(name = "date")
     private Date date;
-
 
 
     public Task() {}
 
-    public Task(String description) {
-        this.id = 0L;
-        this.description = description;
-        this.status = STATUS.DO_NOT_STARTED;
-        this.date = Date.from(Instant.now());
-    }
 
     // region Getters&Setters
 
@@ -74,4 +67,13 @@ public class Task {
     // endregion
 
 
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", status=" + status +
+                ", date=" + date +
+                '}';
+    }
 }
