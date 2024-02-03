@@ -22,10 +22,10 @@ public class Task {
     private String description;
 
     @Enumerated
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     private STATUS status;
 
-    @Column(name = "date")
+    @Column(name = "date", nullable = false)
     private Date date;
 
 
